@@ -1,16 +1,20 @@
+import { useQuery } from '@tanstack/react-query';
+import { fetchOrgans } from 'api';
 import HomeView from 'components/HomeView';
 
 const Organs = () => {
+  const {data: organs, isLoading, isError} = useQuery(['organs'], fetchOrgans);
   return (
     <HomeView title="Organs" subtitle='List of available organs from donors'>
-      <ul style={{marginLeft: 20}}>
-        <li>organ 1</li>
-        <li>organ 2</li>
-        <li>organ 3</li>
-        <li>organ 4</li>
-        <li>organ 5</li>
-        <li>organ 6</li>
-      </ul>
+      {isLoading ? (
+        <div>loading...</div>
+      ) : (
+        <ul style={{marginLeft: 20}}>
+          {(organs || []).map(organ => (
+            <li>{organ.type}</li>
+          ))}
+        </ul>
+      )}
     </HomeView>
   );
 };
