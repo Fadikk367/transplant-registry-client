@@ -62,6 +62,8 @@ export async function fetchOrgans(): Promise<Organ[]> {
     // const response = await axios.get<Hospital[]>('/hospitals');
     // return response.data;
 
+    // throw new Error();
+
     return  await withDelay([
       { id: 1, type: OrganType.Liver, donationDate: new Date(), hospitalName: 'XYZ' },
       { id: 2, type: OrganType.Heart, donationDate: new Date(), hospitalName: 'XYZ' },
@@ -69,6 +71,7 @@ export async function fetchOrgans(): Promise<Organ[]> {
       { id: 4, type: OrganType.Kidney, donationDate: new Date(), hospitalName: 'XYZ' },
       { id: 5, type: OrganType.Kidney, donationDate: new Date(), hospitalName: 'XYZ' },
     ]);
+
   } catch (error) {
     throw new Error('Failed to fetch hospitals');
   }
