@@ -11,17 +11,17 @@ const AuthProvider = ({children}: AuthProviderProps) => {
   const [hospital, setHospital] = useState<Hospital>();
 
   const login = async (credentials: LoginCredentials) => {
-    const {accesToken, hospital} = await loginHospital(credentials);
+    const {accessToken, hospital} = await loginHospital(credentials);
   
     setHospital(hospital);
-    localStorage.setItem('accessToken', accesToken);
+    localStorage.setItem('accessToken', accessToken);
   };
 
   const register = async (data: RegisterHospitalData) => {
-    const {accesToken, hospital} = await registerHospital(data);
+    const {accessToken, hospital} = await registerHospital(data);
   
     setHospital(hospital);
-    localStorage.setItem('accessToken', accesToken);
+    localStorage.setItem('accessToken', accessToken);
   };
 
   const logout = async () => {

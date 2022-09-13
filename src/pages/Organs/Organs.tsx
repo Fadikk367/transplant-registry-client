@@ -13,15 +13,15 @@ type OrganItemProps = {
   data: Organ;
 }
 
-const OrganItem = ({data: {id, type, donationDate, hospitalName}}: OrganItemProps) => {
+const OrganItem = ({data: {id, type, donationDate}}: OrganItemProps) => {
   return (
-    <ListItem>
+    <ListItem key={id}>
       <ListItemAvatar>
         <Avatar>
           <ImageIcon />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={type} secondary={donationDate.toLocaleDateString()} />
+      <ListItemText primary={type} secondary={new Date(donationDate).toLocaleDateString()} />
     </ListItem>
   );
 }

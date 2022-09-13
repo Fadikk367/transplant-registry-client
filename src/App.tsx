@@ -7,8 +7,8 @@ import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import Organs from 'pages/Organs';
-import Patients from 'pages/Patients';
-import Hospitals from 'pages/Hospitals';
+import OrganRequests from 'pages/Requests';
+import Matches from 'pages/Matches';
 import Profile from 'pages/Profile';
 
 const App = () => {
@@ -21,8 +21,8 @@ const App = () => {
           <Route path="/" element={<Home />}>
             <Route index  element={<Organs />} />
             <Route path="/organs" element={<Organs />} />
-            <Route path="/patients" element={<Patients />} />
-            <Route path="/hospitals" element={<Hospitals />} />
+            <Route path="/organ-requests" element={<OrganRequests />} />
+            <Route path="/organ-matches" element={<Matches />} />
             <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>

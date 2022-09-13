@@ -31,7 +31,7 @@ const List = <T,>({
   }
 
   return (
-    <Box sx={{ width: '100%', flex: 1, backgroundColor: 'red' }}>
+    <Box>
       {data.length ? (
         <MuiList>
           {data.map(renderItem)}

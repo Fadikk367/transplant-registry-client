@@ -40,8 +40,8 @@ const Navbar = () => {
       </Typography>
       <Stack flexDirection="row" alignItems="center" justifyContent="center" gap={2}>
         <Button color="inherit" component={Link} to="/organs" startIcon={<FavoriteIcon />}>Organs</Button>
-        <Button color="inherit" component={Link} to="/patients" startIcon={<GroupsIcon />}>Patients</Button>
-        <Button color="inherit" component={Link} to="/hospitals" startIcon={<DomainAddIcon />}>Hospitals</Button>
+        <Button color="inherit" component={Link} to="/organ-requests" startIcon={<GroupsIcon />}>Requests</Button>
+        <Button color="inherit" component={Link} to="/organ-matches" startIcon={<DomainAddIcon />}>Matches</Button>
         <Button color="inherit" component={Link} to="/profile" startIcon={<SettingsIcon />}>Profile</Button>
         <Button color="inherit" startIcon={<LogoutIcon />} onClick={handleLogin}>Logout</Button>
       </Stack>

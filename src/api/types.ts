@@ -1,17 +1,19 @@
-import { OrganType } from "constants/enums";
+import { HLA, OrganType } from "constants/enums";
 
 export type LoginCredentials = {
-  name: string;
+  login: string;
   password: string;
 }
 
 export type RegisterHospitalData = {
+  login: string;
+  password: string;
   name: string;
-  passowrd: string;
+  city: string;
 }
 
 export type LoginResponse = {
-  accesToken: string;
+  accessToken: string;
   hospital: Hospital;
 }
 
@@ -20,20 +22,25 @@ export type RegisterResponse = LoginResponse;
 export type Hospital = {
   id: number;
   name: string;
-}
-
-export type Patient = {
-  id: number;
-  firstName: string;
-  lastName: string;
-  birthDate: Date;
-  hospitalName: string;
+  city: string;
 }
 
 export type Organ = {
   id: number;
   type: OrganType;
   donationDate: Date;
-  hospitalName: string;
+  hla: HLA;
 }
 
+export type OrganRequest = {
+  id: number;
+  organ: OrganType;
+  date: Date;
+  hla: HLA;
+}
+
+export type OrganMatch = {
+  id: number;
+  organ: Organ;
+  request: Request;
+}
