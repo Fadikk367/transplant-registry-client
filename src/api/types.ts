@@ -1,4 +1,8 @@
-import { HLA, OrganType } from "constants/enums";
+import { HLA, OrganMatchStatus, OrganRequestStatus, OrganStatus, OrganType, PatientPriority } from "constants/enums";
+
+export type WithHospital<T> = T & {
+  hospital: Hospital;
+}
 
 export type LoginCredentials = {
   login: string;
@@ -30,6 +34,7 @@ export type Organ = {
   type: OrganType;
   donationDate: Date;
   hla: HLA;
+  status: OrganStatus;
 }
 
 export type OrganRequest = {
@@ -37,12 +42,15 @@ export type OrganRequest = {
   organ: OrganType;
   date: Date;
   hla: HLA;
+  status: OrganRequestStatus;
+  priority: PatientPriority;
 }
 
 export type OrganMatch = {
   id: number;
-  organ: Organ;
-  request: Request;
+  organ: WithHospital<Organ>;
+  request: WithHospital<OrganRequest>;
+  status: OrganMatchStatus;
 }
 
 export type OrganData = {

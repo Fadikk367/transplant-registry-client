@@ -1,3 +1,4 @@
+import { OrganMatchStatus } from 'constants/enums';
 import axios, { handleAxiosError } from './axios';
 import type {
   LoginCredentials, 
@@ -8,7 +9,8 @@ import type {
   OrganRequest, 
   OrganMatch,
   OrganRequestData,
-  OrganData
+  OrganData,
+  WithHospital
 } from "./types";
 
 
@@ -41,18 +43,18 @@ export async function fetchHospitals(): Promise<Hospital[]> {
   }
 }
 
-export async function fetchOrgans(): Promise<Organ[]> {
+export async function fetchOrgans(): Promise<WithHospital<Organ>[]> {
   try {
-    const response = await axios.get<Organ[]>('/organs');
+    const response = await axios.get<WithHospital<Organ>[]>('/organs');
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch Organs');
   }
 }
 
-export async function fetchOrganRequests(): Promise<OrganRequest[]> {
+export async function fetchOrganRequests(): Promise<WithHospital<OrganRequest>[]> {
   try {
-    const response = await axios.get<OrganRequest[]>('/organ-requests');
+    const response = await axios.get<WithHospital<OrganRequest>[]>('/organ-requests');
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch hospitals');
@@ -85,3 +87,13 @@ export async function addOrgan(data: OrganData): Promise<Organ> {
     throw new Error('Failed to add organ');
   }
 }
+
+export async function updateOrganMatch(id: number, status: OrganMatchStatus): Promise<OrganMatch> {
+  try {
+    const response = await axios.patch<OrganMatch>(`/organ-matches/${id}`, {status});
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to add organ');
+  }
+}
+

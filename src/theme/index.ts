@@ -5,5 +5,11 @@ export const theme = createTheme({
     primary: {
       main: '#895050',
     },
+    success: {
+      main: '#189d1f'
+    },
+    error: {
+      main: '#c21212'
+    }
   },
 });
