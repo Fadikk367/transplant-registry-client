@@ -44,3 +44,13 @@ export type OrganMatch = {
   organ: Organ;
   request: Request;
 }
+
+export type OrganData = {
+  type: OrganType;
+  hla: HLA;
+}
+
+export type OrganRequestData = {
+  organ: OrganType;
+  hla: HLA;
+}

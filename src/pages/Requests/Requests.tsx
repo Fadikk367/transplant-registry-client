@@ -8,10 +8,16 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ImageIcon from '@mui/icons-material/Image';
 import { OrganRequest } from 'api/types';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import { useState } from 'react';
+import AddRequestForm from 'components/AddRequestForm';
 
 type RequestItemProps = {
   data: OrganRequest;
 }
+
 
 const RequestItem = ({data: {id, organ, date}}: RequestItemProps) => {
   return (
@@ -27,13 +33,32 @@ const RequestItem = ({data: {id, organ, date}}: RequestItemProps) => {
 }
 
 const Requests = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <HomeView title="Organ Requests" subtitle='List of reuqests for organs that patient are waiting for'>
+    <HomeView 
+      title="Organ Requests" 
+      subtitle='List of reuqests for organs that patient are waiting for'
+      rigleElement={
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => setIsModalOpen(true)}>
+          Add request
+        </Button>
+      }
+    >
       <List
         itemsKey='organ-requests' 
-        fetchItems={fetchOrganRequests} 
+        fetchItems={fetchOrganRequests}
         renderItem={(organRequest) => <RequestItem key={organRequest.id} data={organRequest} />}
       />
+      <Modal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <AddRequestForm closeModal={() => setIsModalOpen(false)} />
+      </Modal>
+
     </HomeView>
   );
 };

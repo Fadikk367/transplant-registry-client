@@ -6,7 +6,9 @@ import type {
   RegisterHospitalData, 
   Organ, 
   OrganRequest, 
-  OrganMatch
+  OrganMatch,
+  OrganRequestData,
+  OrganData
 } from "./types";
 
 
@@ -63,5 +65,23 @@ export async function fetchOrganMatches(): Promise<OrganMatch[]> {
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch organ matches');
+  }
+}
+
+export async function addOrganRequest(data: OrganRequestData): Promise<OrganRequest> {
+  try {
+    const response = await axios.post<OrganRequest>('/organ-requests', data);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to add organ request');
+  }
+}
+
+export async function addOrgan(data: OrganData): Promise<Organ> {
+  try {
+    const response = await axios.post<Organ>('/organs', data);
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to add organ');
   }
 }

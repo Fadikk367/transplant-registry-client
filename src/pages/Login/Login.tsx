@@ -50,12 +50,14 @@ const Login = () => {
             variant="outlined"
             inputProps={formFields.login}
             helperText={errors.login?.message}
+            required
           />
           <TextField 
             type="password" 
             label="Password" 
             variant="outlined" 
             inputProps={formFields.password} 
+            required
             helperText={errors.password?.message}
           />
           <Typography variant="body2" gutterBottom>
