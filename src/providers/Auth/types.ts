@@ -1,11 +1,6 @@
 import React from 'react';
 
-import type { LoginCredentials, RegisterHospitalData } from 'api/types';
-
-export type Hospital = {
-  id: number;
-  name: string;
-}
+import type { Hospital, LoginCredentials, RegisterHospitalData } from 'api/types';
 
 export type AuthProviderProps = {
   children?: React.ReactNode;

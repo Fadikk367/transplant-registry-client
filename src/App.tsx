@@ -9,7 +9,6 @@ import Register from 'pages/Register';
 import Organs from 'pages/Organs';
 import OrganRequests from 'pages/Requests';
 import Matches from 'pages/Matches';
-import Profile from 'pages/Profile';
 
 const App = () => {
   return (
@@ -23,7 +22,6 @@ const App = () => {
             <Route path="/organs" element={<Organs />} />
             <Route path="/organ-requests" element={<OrganRequests />} />
             <Route path="/organ-matches" element={<Matches />} />
-            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </Box>

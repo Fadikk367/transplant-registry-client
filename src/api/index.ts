@@ -13,6 +13,14 @@ import type {
   WithHospital
 } from "./types";
 
+export async function fetchProfile(): Promise<Hospital> {
+  try {
+    const response = await axios.get<Hospital>('/auth/profile');
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch profile');
+  }
+}
 
 export async function loginHospital(credentials: LoginCredentials): Promise<LoginResponse> {
   try {

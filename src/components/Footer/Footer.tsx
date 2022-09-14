@@ -16,8 +16,8 @@ const Footer = () => {
         width={1200}
         margin="auto"
         >
-        <Typography color='white'>Footer</Typography>
-        <Typography color='white'>2022</Typography>
+        <Typography color='white'>WFiIS - ZTI - 2022</Typography>
+        <Typography color='white'>Adrian Furman</Typography>
       </Stack>
     </Box>
   )

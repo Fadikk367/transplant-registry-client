@@ -6,10 +6,9 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
-import GroupsIcon from '@mui/icons-material/Groups';
+import DraftsIcon from '@mui/icons-material/Drafts';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import DomainAddIcon from '@mui/icons-material/DomainAdd';
-import SettingsIcon from '@mui/icons-material/Settings';
+import JoinInnerIcon from '@mui/icons-material/JoinInner';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 import { useAuth } from 'hooks';
@@ -36,13 +35,12 @@ const Navbar = () => {
         <MonitorHeartIcon fontSize="large"/>
       </IconButton>
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-        National Transplant Registry
+        National Transplant Registry ({auth.hospital ? `${auth.hospital.name}, ${auth.hospital.city}` : ''})
       </Typography>
       <Stack flexDirection="row" alignItems="center" justifyContent="center" gap={2}>
         <Button color="inherit" component={Link} to="/organs" startIcon={<FavoriteIcon />}>Organs</Button>
-        <Button color="inherit" component={Link} to="/organ-requests" startIcon={<GroupsIcon />}>Requests</Button>
-        <Button color="inherit" component={Link} to="/organ-matches" startIcon={<DomainAddIcon />}>Matches</Button>
-        <Button color="inherit" component={Link} to="/profile" startIcon={<SettingsIcon />}>Profile</Button>
+        <Button color="inherit" component={Link} to="/organ-requests" startIcon={<DraftsIcon />}>Requests</Button>
+        <Button color="inherit" component={Link} to="/organ-matches" startIcon={<JoinInnerIcon />}>Matches</Button>
         <Button color="inherit" startIcon={<LogoutIcon />} onClick={handleLogin}>Logout</Button>
       </Stack>
     </Toolbar>
