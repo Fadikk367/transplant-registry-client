@@ -10,9 +10,27 @@ Znalezione dopasowania widoczne są w zakładce `MATCHES`. Dostępne są dla nic
 
 Dodatkowo na każdej liście w celach informacyjnych widoczne są historyczne rekordy, które zostały delikatnie wyszarzone oraz zablokowane są dla nich akcje w przypadku dopasowań.
 
+### Aplikacja uruchomiona w chmurze:
+
+-> https://fadikk367.github.io/transplant-registry-client
+### Przykładowe konta do testowania aplikacji:
+
+* Szpital nr 1:
+
+  login: `prokocim`
+  
+  hasło: `admin`
+
+* Szpital nr 2:
+
+  login: `rydygiera`
+
+  hasło: `admin`
+
+
 ## Interfejs
 
-<!-- Strona logowania
+Strona logowania
 
 ![Strona logowania](./doc/login.png)
 
@@ -38,7 +56,7 @@ Widok modalu do dodawania organu
 
 Widok modalu do dodawania zapytania o organ
 
-![Modal dodania zapytania](./doc/requests-add.png) -->
+![Modal dodania zapytania](./doc/requests-add.png)
 
 ## Schemat Bazy Danych
 
@@ -242,23 +260,41 @@ export class OrganRequestsService {
 
 W zamieszczonym fragmencie kodu widzimy przykład zapobiegania problemowi `Circular Dependency` poprzez wstrzyknięcie przekazania referencji.
 
+
+Au autentykacji użytkowników wykorzystany został mechanizm tokenów JWT - endpointy nieoznaczone jako `@Public` są domyślnie strzeżone przed nieautoryzowanym dostępem. Podczas sprawdzania poprawności tokenu, middleware dokleja do obiektu reprezentującego zapytanie obiekt szpitala, którego tożsamość zawiera się w payloadzie tokenu. Dzięki takiemu zabiegowi znamy szpital, z którego wykonane zostało dane zapytanie więc możemy bezpiecznie użyć jego identyfikatora do utworznia obiektów powiązanych z tym właśnie szpitalem lub wyciągnięcia tylko takich obiektów, które są z nim powiązane:
+
+```ts
+@Controller('organ-matches')
+export class OrganMatchController {
+  constructor(private readonly organMatchService: OrganMatchService) {}
+
+  @Get()
+  findAll(@Req() req: RequestWithHospital) {
+    return this.organMatchService.findAll(req.hospital.id);
+  }
+
+```
+
 ## Aplikacja klienta
+
+Frontend aplikacji wykonany został jako aplikacja SPA w technologii React. Jako bibliotekę komponentów wykorzystano MaterialUI. Do wykonywania zapytań HTTP użyta została biblioteka `axios` nastomiast od automatyczego cachowania danych po stornie klienta oraz obsługi cyklu życia zapytania skorzystano z niesamowicie popularnej biblitoeki `TanStack Query` (kiedyś `react-query`).
 
 ## Technologie
 
 ### Aplikacja klienta
-* React
-* MaterialUI
+* [React](https://pl.reactjs.org/)
+* [MaterialUI](https://mui.com/)
+* [TanStack Query](https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/)
 
 ### Aplikacja serwera
-* NestJS
-* TypeORM
-* PassportJS
+* [NestJS](https://nestjs.com/)
+* [TypeORM](https://typeorm.io/)
+* [PassportJS](https://www.passportjs.org/)
 
 ### Baza danych
 * PostgreSQL
 
-### Wdrożenie i hosting
+## Wdrożenie i hosting
 
 Aplikacja klienta hostowana jest przy pomocy `github-pages`.
 
