@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { HashRouter  } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ThemeProvider } from '@mui/material/styles';
 
@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 
 const Providers = ({ children }: ProvidersProps) => {
   return (
-    <HashRouter  basename={process.env.PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <AuthProvider>
@@ -24,7 +24,7 @@ const Providers = ({ children }: ProvidersProps) => {
           </AuthProvider>
         </ThemeProvider>
       </QueryClientProvider>
-    </HashRouter >
+    </BrowserRouter>
   )
 }
 
