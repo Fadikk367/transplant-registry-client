@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/transplant-registry-client/static/css/main.c7ec3132.css",
+    "main.js": "/transplant-registry-client/static/js/main.b6e522fe.js",
+    "static/media/theme.png": "/transplant-registry-client/static/media/theme.f59725efada7a4a46cd0.png",
+    "index.html": "/transplant-registry-client/index.html",
+    "main.c7ec3132.css.map": "/transplant-registry-client/static/css/main.c7ec3132.css.map",
+    "main.b6e522fe.js.map": "/transplant-registry-client/static/js/main.b6e522fe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c7ec3132.css",
+    "static/js/main.b6e522fe.js"
+  ]
+}
